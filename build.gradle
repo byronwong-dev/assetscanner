@@ -1,7 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.6.21"
-    id("org.jetbrains.kotlin.kapt") version "1.6.21"
-    id("org.jetbrains.kotlin.plugin.allopen") version "1.6.21"
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
+    id("org.jetbrains.kotlin.kapt") version "1.7.10"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.7.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.6.2"
 }
@@ -15,16 +15,25 @@ repositories {
 
 dependencies {
     kapt("io.micronaut:micronaut-http-validation")
+    kaptTest "io.micronaut:micronaut-inject-java"
+
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("jakarta.annotation:jakarta.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("org.jsoup:jsoup:1.15.3")
+
+    testImplementation("io.micronaut.test:micronaut-test-kotest5:3.7.0")
+    testImplementation("io.mockk:mockk:{mockkVersion}")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:{kotestVersion}")
 
 }
 
@@ -51,11 +60,15 @@ tasks {
 graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
-    testRuntime("junit5")
+    testRuntime("kotest")
     processing {
         incremental(true)
         annotations("byronwong.scanner.*")
     }
+}
+
+test {
+    useJUnitPlatform()
 }
 
 
