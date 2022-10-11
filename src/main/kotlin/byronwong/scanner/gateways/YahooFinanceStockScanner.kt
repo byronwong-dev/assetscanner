@@ -1,7 +1,7 @@
-package gateways
+package byronwong.scanner.gateways
 
 import jakarta.inject.Singleton
-import entities.Quote
+import byronwong.scanner.entities.Quote
 import org.jsoup.Jsoup
 import java.text.NumberFormat
 import java.util.*

@@ -1,6 +1,6 @@
 package byronwong.scanner
 
-import gateways.YahooFinanceStockScanner
+import byronwong.scanner.gateways.YahooFinanceStockScanner
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe

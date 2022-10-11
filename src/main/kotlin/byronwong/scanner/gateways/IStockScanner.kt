@@ -1,6 +1,6 @@
-package gateways
+package byronwong.scanner.gateways
 
-import entities.Quote
+import byronwong.scanner.entities.Quote
 
 interface IStockScanner {
     fun getQuotePrice(ticket_name: String): Quote
