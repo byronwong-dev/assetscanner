@@ -6,8 +6,6 @@ plugins {
     id("io.micronaut.application") version "3.6.2"
 }
 
-version = "0.1"
-group = "byronwong.scanner"
 
 repositories {
     mavenCentral()
